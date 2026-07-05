@@ -46,28 +46,28 @@ A fully self-contained Cloudflare Workers VPN management panel implemented as a 
 
 ## Module Breakdown (20 Sections)
 
-| § | Module | Lines | Description |
-|---|--------|-------|-------------|
-| §1 | Core Utilities | ~150 | Base64URL, hex, UUIDv4, deep clone/merge, memoize, retry, cookie/query parsing |
-| §2 | Constants & Config | ~200 | App config, KV key prefixes, role hierarchy, permissions matrix, CSP, tunnel states |
-| §3 | Security Primitives | ~280 | SHA-256/512, HMAC, PBKDF2 password hashing, JWT sign/verify, TOTP (MFA), AES-256-GCM, X25519 key generation |
-| §4 | Input Validation | ~200 | Email, password strength, username, IP/CIDR, port, WireGuard keys, URL, hostname, UUID, HTML sanitization, JSON schema validation |
-| §5 | Storage Layer | ~130 | KV abstraction with JSON serialization, batch get, atomic increment, existence check, metadata support |
-| §6 | Authentication | ~220 | Login with MFA, refresh tokens, logout, role-based access control (RBAC), account lockout, IP whitelist |
-| §7 | Session Manager | ~90 | Token extraction from headers/cookies, session creation, listing, revocation |
-| §8 | Rate Limiter | ~70 | Sliding-window rate limiting per category (api/auth/admin), response headers |
-| §9 | Logging & Metrics | ~180 | Structured logging (5 levels), KV-persisted logs, audit trail with query, metrics counters/gauges |
-| §10 | User Manager | ~200 | CRUD for users, password change, MFA enable/confirm/disable, role enforcement |
-| §11 | Peer Manager | ~220 | WireGuard peer CRUD, keypair generation, client config generation, key regeneration |
-| §12 | Tunnel Manager | ~180 | Connection lifecycle with state machine, traffic tracking, handshake recording, cleanup |
-| §13 | Routing Engine | ~180 | CIDR/domain routing rules, rule evaluation, split-tunnel logic |
-| §14 | DNS Manager | ~80 | DNS config, custom records, split-tunnel domains |
-| §15 | Health Checks | ~80 | Comprehensive health check (KV, config, metrics, tunnels) |
-| §16 | API Router | ~160 | Regex-based routing, middleware chain, CORS, param extraction, role/permission enforcement |
-| §17 | REST API Handlers | ~300 | 30+ endpoints: auth, users, peers, tunnels, routing, config, metrics, logs, audit, health |
-| §18 | Admin Dashboard | ~800 | Full SPA (inline HTML/CSS/JS): dark theme, sidebar nav, stat cards, data tables, modals, toast notifications, config tabs |
-| §19 | WebSocket | ~100 | Live metrics streaming via WebSocket upgrade with subscription model |
-| §20 | Main Handler | ~150 | Cold-start initialization, superadmin creation, static files, catch-all, cron handler for cleanup |
+| § | Module | Description |
+|---|--------|-------------|
+| §1 | Core Utilities | Base64URL, hex, UUIDv4, deep clone/merge, memoize, retry, cookie/query parsing |
+| §2 | Constants & Config | App config, KV key prefixes, role hierarchy, permissions matrix, CSP, tunnel states |
+| §3 | Security Primitives | SHA-256/512, HMAC, PBKDF2 password hashing, JWT sign/verify, TOTP (MFA), AES-256-GCM, X25519 key generation |
+| §4 | Input Validation | Email, password strength, username, IP/CIDR, port, WireGuard keys, URL, hostname, UUID, HTML sanitization, JSON schema validation |
+| §5 | Storage Layer | KV abstraction with JSON serialization, batch get, atomic increment, existence check, metadata support |
+| §6 | Authentication | Login with MFA, refresh tokens, logout, role-based access control (RBAC), account lockout, IP whitelist |
+| §7 | Session Manager | Token extraction from headers/cookies, session creation, listing, revocation |
+| §8 | Rate Limiter | Sliding-window rate limiting per category (api/auth/admin), response headers |
+| §9 | Logging & Metrics | Structured logging (5 levels), KV-persisted logs, audit trail with query, metrics counters/gauges |
+| §10 | User Manager | CRUD for users, password change, MFA enable/confirm/disable, role enforcement |
+| §11 | Peer Manager | WireGuard peer CRUD, keypair generation, client config generation, key regeneration |
+| §12 | Tunnel Manager | Connection lifecycle with state machine, traffic tracking, handshake recording, cleanup |
+| §13 | Routing Engine | CIDR/domain routing rules, rule evaluation, split-tunnel logic |
+| §14 | DNS Manager | DNS config, custom records, split-tunnel domains |
+| §15 | Health Checks | Comprehensive health check (KV, config, metrics, tunnels) |
+| §16 | API Router | Regex-based routing, middleware chain, CORS, param extraction, role/permission enforcement |
+| §17 | REST API Handlers | 30+ endpoints: auth, users, peers, tunnels, routing, config, metrics, logs, audit, health |
+| §18 | Admin Dashboard | Full SPA (inline HTML/CSS/JS): dark theme, sidebar nav, stat cards, data tables, modals, toast notifications, config tabs |
+| §19 | WebSocket | Live metrics streaming via WebSocket upgrade with subscription model |
+| §20 | Main Handler | Cold-start initialization, superadmin creation, static files, catch-all, cron handler for cleanup |
 
 ---
 
